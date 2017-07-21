@@ -11,21 +11,24 @@
         </style>
     <script type="text/javascript" src="angular.min.js"></script>
 	 <script type="text/javascript" src="main.js"></script>
+       <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
     </head>
     <body>
 
     <div ng-controller="mainController" >
-    	<input type="text" ng-model="user.title" placeholder="Title" >
-        <input type="text" ng-model="user.details" placeholder="Details">
+    	<input type="text" ng-model="user.title" placeholder="Enter Title...." >
+        <input type="text" ng-model="user.details" placeholder="Enter Details....">
         
          <button ng-click="addtodoList(user)">Add</button>
+        <input type="text" ng-model="search" placeholder="Search...." >
 		<h1>TodoList</h1>
-        
-			<div ng-repeat="todo in todoList" class="todo">
+            	
+
+			<div ng-repeat="todo in todoList | filter:search" class="todo">
 				<h2>{{ todo.title }}</h2>
                 <p>{{ todo.details }}</p>
-                <button ng-click="deleteTodoList(todo)">	Delete
-				</button>
+              <i class="fa fa-trash-o" ng-click="deleteTodoList(todo)"></i>
+
 				</div> 
         </div>
     </body>
